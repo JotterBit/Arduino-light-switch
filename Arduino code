@@ -1,0 +1,28 @@
+// C++ code
+//
+int light_on = 0;
+
+void setup()
+{
+  pinMode(2, INPUT);
+  Serial.begin(9600);
+  pinMode(7, OUTPUT);
+
+  light_on = 0;
+}
+
+void loop()
+{
+  if (digitalRead(2) == 1) {
+    light_on = (1 - light_on);
+    Serial.println(light_on);
+    while (digitalRead(2) == 1) {
+    }
+  }
+  if (light_on == 1) {
+    digitalWrite(7, HIGH);
+  } else {
+    digitalWrite(7, LOW);
+  }
+  delay(10); // Delay a little bit to improve simulation performance
+}
